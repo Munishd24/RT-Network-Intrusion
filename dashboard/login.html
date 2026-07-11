@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud-Scale Shop | Secure Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #06060f;
+            --card-bg: rgba(14, 14, 35, 0.75);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #e8e8f0;
+            --text-muted: #8a8aa3;
+            --accent: #bc8cff;
+            --accent-green: #3fb950;
+            --accent-blue: #58a6ff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 30px 20px;
+            background: radial-gradient(circle at top, rgba(188, 140, 255, 0.15), transparent);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin: 0 0 10px 0;
+            color: var(--text);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .login-form {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-blue));
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .form-group input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #06060f;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #d2a8ff;
+            box-shadow: 0 0 12px rgba(188, 140, 255, 0.4);
+        }
+
+        .info-tag {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">🛡️ SecureShop</a>
+        <nav>
+            <a href="/shop">🛍️ Shop</a>
+            <a href="/cart">🛒 Cart</a>
+            <a href="/payment">💳 Checkout</a>
+            <a href="/login" class="active">🔑 Login</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>🔑 User Sign In</h1>
+            <p>Access your accounts under active security shield protection.</p>
+        </div>
+
+        <div class="login-form">
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="admin@secureshop.ccns">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="••••••••">
+            </div>
+            <button class="btn" onclick="alert('Demo login successful!')">Sign In</button>
+        </div>
+
+        <div class="info-tag">
+            Logged Client IP: <span style="color:var(--accent-blue); font-weight:bold;">Dynamic Session Active</span> | Security Status: <span style="color:var(--accent-green)">Protected by IDS</span>
+        </div>
+    </div>
+</body>
+</html>

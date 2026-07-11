@@ -1,0 +1,75 @@
+# ══════════════════════════════════════════════════════════════════
+#  RT-NIDS Configuration
+#  Real-Time Network Intrusion Detection & Prevention System
+# ══════════════════════════════════════════════════════════════════
+
+# ── Risk Engine ────────────────────────────────────────────────────
+risk_engine:
+  # Points added to an IP's risk score per detection type
+  weights:
+    PORT_SCAN: 5
+    UNUSUAL_UPLOAD_ACTIVITY: 3
+    RESOURCE_ABUSE: 2
+    ARP_SPOOFING: 5
+    LATERAL_MOVEMENT: 4
+    RESOURCE_ANOMALY: 1
+  # These rules bypass thresholds and block immediately
+  immediate_block:
+    - ARP_SPOOFING
+  # Additional severity multipliers applied on top of weights
+  severity_multiplier:
+    CRITICAL: 2.0
+    MEDIUM: 1.0
+    LOW: 0.5
+    SAFE: 0.0
+  # Total risk score threshold that triggers automatic blocking
+  block_threshold: 15
+
+# ── Detection Thresholds ──────────────────────────────────────────
+detection:
+  # Port scan (scorer.py — packet-level, used by sniffer.py)
+  port_scan_window_seconds: 5
+  port_scan_unique_ports:
+    critical: 50
+    medium: 20
+    low: 5
+
+  # AnomalyEngine thresholds (anomaly.py)
+  cpu_threshold: 85.0
+  cpu_sustained_seconds: 30.0
+  upload_multiplier: 3.0
+  upload_baseline_samples: 15
+  engine_port_scan_threshold: 10
+  engine_port_scan_window: 5.0
+  cooldown_seconds: 10.0
+  zscore_window: 60
+  zscore_threshold: 3.0
+
+# ── Firewall ──────────────────────────────────────────────────────
+firewall:
+  whitelist:
+    - "127.0.0.1"
+    - "0.0.0.0"
+  cooldown_seconds: 30
+  max_blocked: 500
+
+# ── Monitoring ────────────────────────────────────────────────────
+monitoring:
+  poll_interval_seconds: 2
+  metrics_history_size: 60
+  alert_buffer_size: 500
+
+# ── Server ────────────────────────────────────────────────────────
+server:
+  host: "0.0.0.0"
+  port: 5000
+
+# ── Logging ───────────────────────────────────────────────────────
+logging:
+  level: "INFO"
+  format: "json"          # "json" or "text"
+  file: "data/ids.log"
+
+# ── Database ──────────────────────────────────────────────────────
+database:
+  path: "data/incidents.db"

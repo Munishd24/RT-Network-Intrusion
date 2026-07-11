@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud-Scale Shop | Catalog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #06060f;
+            --card-bg: rgba(14, 14, 35, 0.75);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #e8e8f0;
+            --text-muted: #8a8aa3;
+            --accent: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-red: #ff7b72;
+            --accent-purple: #bc8cff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: radial-gradient(circle at top, rgba(88, 166, 255, 0.15), transparent);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            color: var(--text);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #06060f;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #79c0ff;
+            box-shadow: 0 0 12px rgba(88, 166, 255, 0.4);
+        }
+
+        .info-tag {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">🛡️ SecureShop</a>
+        <nav>
+            <a href="/shop" class="active">🛍️ Shop</a>
+            <a href="/cart">🛒 Cart</a>
+            <a href="/payment">💳 Checkout</a>
+            <a href="/login">🔑 Login</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Browse Our Catalog</h1>
+            <p>Your simulated traffic will trigger real-time logs in the security monitor CLI.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>High-Performance Server</h3>
+                <p>Enterprise cloud VPS instance with secure key rotation and DDoS protection.</p>
+                <div class="price">$199 / mo</div>
+                <a href="/cart" class="btn">Add to Cart</a>
+            </div>
+            <div class="card">
+                <h3>Next-Gen Firewall Suite</h3>
+                <p>Advanced traffic inspector with AI anomaly detection, real-time alert hooks, and iptables integration.</p>
+                <div class="price">$49 / mo</div>
+                <a href="/cart" class="btn">Add to Cart</a>
+            </div>
+            <div class="card">
+                <h3>Edge Router</h3>
+                <p>Hardware routing device with scapy sniffer support and ESP32 OLED display hooks.</p>
+                <div class="price">$299</div>
+                <a href="/cart" class="btn">Add to Cart</a>
+            </div>
+        </div>
+
+        <div class="info-tag">
+            Logged Client IP: <span style="color:var(--accent); font-weight:bold;" id="my-ip">detecting...</span> | Security Status: <span style="color:var(--accent-green)">Protected by IDS</span>
+        </div>
+    </div>
+
+    <script>
+        // Fetch current client IP from metrics to show them
+        fetch('/metrics')
+            .then(res => res.json())
+            .then(data => {
+                // Find a connection from the client or show localhost
+                document.getElementById('my-ip').textContent = "Dynamic Session Active";
+            })
+            .catch(() => {
+                document.getElementById('my-ip').textContent = "127.0.0.1";
+            });
+    </script>
+</body>
+</html>
