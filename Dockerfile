@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     libpcap-dev \
     tcpdump \
     gcc \
+    iptables \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory inside the container
